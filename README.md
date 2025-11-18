@@ -2,6 +2,12 @@
 
 A full-stack web application for buying and selling books, built with the MERN stack (MongoDB, Express, React, Node.js).
 
+## 📋 Project Proposal
+
+📄 **[View Complete Project Proposal (PDF)](./BookBazaar_Project_Proposal.pdf)**
+
+---
+
 ## 🎯 Milestone 1: Authentication & Deployment ✅
 
 This milestone includes:
