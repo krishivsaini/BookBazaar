@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   position: relative;
   overflow: hidden;
 }
@@ -14,7 +14,7 @@
   position: absolute;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   top: -300px;
   right: -300px;
@@ -27,7 +27,7 @@
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   bottom: -250px;
   left: -250px;
@@ -45,15 +45,16 @@
 }
 
 .auth-card {
-  background: rgba(40, 40, 40, 0.95);
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 
     0 8px 32px 0 rgba(0, 0, 0, 0.6),
-    inset 0 0 20px rgba(255, 255, 255, 0.02);
+    0 0 40px rgba(99, 102, 241, 0.1),
+    inset 0 0 20px rgba(99, 102, 241, 0.02);
   width: 100%;
   max-width: 450px;
   position: relative;
@@ -186,7 +187,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: 12px;
   color: white;
   font-size: 1rem;
@@ -200,22 +201,22 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(99, 102, 241, 0.6);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.1),
-    inset 0 0 10px rgba(255, 255, 255, 0.02);
+    0 0 20px rgba(99, 102, 241, 0.3),
+    inset 0 0 10px rgba(99, 102, 241, 0.05);
   transform: translateY(-2px);
 }
 
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border: 1px solid rgba(99, 102, 241, 0.5);
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 700;
@@ -225,7 +226,7 @@
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,9 +260,10 @@
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 
-    0 10px 30px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 1);
+    0 10px 30px rgba(99, 102, 241, 0.6),
+    0 0 30px rgba(139, 92, 246, 0.4);
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  border-color: rgba(139, 92, 246, 0.8);
 }
 
 .submit-btn:disabled {
@@ -277,7 +279,7 @@
 }
 
 .auth-switch a {
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-weight: 700;
   transition: all 0.3s ease;
@@ -294,8 +296,8 @@
 }
 
 .auth-switch a:hover {
-  color: #ffffff;
-  border-bottom: 2px solid white;
+  color: #8b5cf6;
+  border-bottom: 2px solid #8b5cf6;
 }
 
 .auth-switch a:hover .link-icon {
@@ -350,14 +352,14 @@
 }
 
 .error-message {
-  background: rgba(239, 83, 80, 0.2);
+  background: rgba(239, 68, 68, 0.15);
   backdrop-filter: blur(10px);
   color: #ffffff;
   padding: 0.875rem 1rem;
   border-radius: 12px;
   margin-bottom: 1rem;
-  border: 1px solid rgba(239, 83, 80, 0.4);
-  box-shadow: 0 4px 15px rgba(239, 83, 80, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
   animation: shake 0.5s ease;
 }
 

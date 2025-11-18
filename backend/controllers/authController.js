@@ -1,9 +1,5 @@
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
-
-// @desc    Register a new user
-// @route   POST /api/auth/signup
-// @access  Public
 export const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -37,10 +33,6 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// @desc    Authenticate user & get token
-// @route   POST /api/auth/login
-// @access  Public
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -63,10 +55,6 @@ export const login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// @desc    Get user profile
-// @route   GET /api/auth/profile
-// @access  Private
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
