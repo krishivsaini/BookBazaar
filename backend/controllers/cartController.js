@@ -34,9 +34,10 @@ export const addToCart = async (req, res) => {
       return res.status(404).json({ message: 'Book not found' });
     }
 
-    if (book.stock < quantity) {
-      return res.status(400).json({ message: 'Insufficient stock' });
-    }
+    // Stock check disabled for demo purposes
+    // if (book.stock < quantity) {
+    //   return res.status(400).json({ message: 'Insufficient stock' });
+    // }
 
     let cart = await Cart.findOne({ user: req.user._id });
 

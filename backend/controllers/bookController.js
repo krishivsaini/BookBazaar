@@ -14,7 +14,15 @@ export const getBooks = async (req, res) => {
 
     // Category filter
     if (req.query.category) {
-      query.category = req.query.category;
+      let categories = req.query.category;
+      // Handle comma-separated string or single string
+      if (typeof categories === 'string') {
+        categories = categories.includes(',') ? categories.split(',') : [categories];
+      }
+      // If we have an array (or converted to one), use $in
+      if (Array.isArray(categories) && categories.length > 0) {
+        query.category = { $in: categories };
+      }
     }
 
     // Price range filter
@@ -31,7 +39,13 @@ export const getBooks = async (req, res) => {
 
     // Search query
     if (req.query.search) {
-      query.$text = { $search: req.query.search };
+      const searchRegex = new RegExp(req.query.search, 'i');
+      query.$or = [
+        { title: searchRegex },
+        { author: searchRegex },
+        { description: searchRegex },
+        { category: searchRegex }
+      ];
     }
 
     // Author filter
@@ -44,28 +58,30 @@ export const getBooks = async (req, res) => {
     if (req.query.sort) {
       switch (req.query.sort) {
         case 'price-asc':
-          sort.price = 1;
+          sort = { price: 1, _id: 1 };
           break;
         case 'price-desc':
-          sort.price = -1;
+          sort = { price: -1, _id: 1 };
           break;
         case 'rating':
-          sort.rating = -1;
+          sort = { rating: -1, _id: 1 };
           break;
         case 'latest':
-          sort.createdAt = -1;
+          sort = { createdAt: -1, _id: 1 };
           break;
         default:
-          sort.createdAt = -1;
+          sort = { createdAt: -1, _id: 1 };
       }
     } else {
-      sort.createdAt = -1;
+      sort = { createdAt: -1, _id: 1 };
     }
 
     const books = await Book.find(query)
       .sort(sort)
       .limit(limit)
       .skip(skip);
+
+    // console.log('Books sent:', books[0]); // Debug log
 
     const total = await Book.countDocuments(query);
 

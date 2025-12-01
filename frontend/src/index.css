@@ -1,8 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   margin: 0;
@@ -28,17 +26,3 @@ code {
   color: #667eea;
 }
 
-/* Mobile Responsive - Global */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  button, input {
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-}

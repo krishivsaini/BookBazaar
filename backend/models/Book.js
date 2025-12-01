@@ -102,8 +102,15 @@ const bookSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
 );
+
+// Virtual for single image
+bookSchema.virtual('image').get(function() {
+  return this.images && this.images.length > 0 ? this.images[0] : '';
+});
 
 // Index for search and filtering
 bookSchema.index({ title: 'text', author: 'text', description: 'text' });

@@ -9,6 +9,14 @@ export const getWishlist = async (req, res) => {
 
     if (!wishlist) {
       wishlist = await Wishlist.create({ user: req.user._id, items: [] });
+    } else {
+      // Filter out null books (books that were deleted)
+      const originalLength = wishlist.items.length;
+      wishlist.items = wishlist.items.filter(item => item.book !== null);
+      
+      if (wishlist.items.length !== originalLength) {
+        await wishlist.save();
+      }
     }
 
     res.json(wishlist);

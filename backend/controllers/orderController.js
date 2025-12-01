@@ -2,6 +2,8 @@ import Order from '../models/Order.js';
 import Cart from '../models/Cart.js';
 import Book from '../models/Book.js';
 
+import User from '../models/User.js';
+
 // @desc    Create new order
 // @route   POST /api/orders
 // @access  Private
@@ -59,6 +61,12 @@ export const createOrder = async (req, res) => {
         $inc: { stock: -item.quantity },
       });
     }
+
+    // Award points (1 point per $1 spent)
+    const pointsEarned = Math.floor(totalAmount);
+    await User.findByIdAndUpdate(req.user._id, {
+      $inc: { points: pointsEarned }
+    });
 
     // Clear cart
     await cart.clearCart();
