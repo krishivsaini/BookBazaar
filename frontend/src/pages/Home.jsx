@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import axios from '../utils/api';
-import { FaSearch, FaBookOpen, FaHeart, FaStar, FaUserPlus, FaChevronLeft, FaChevronRight, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaBook, FaSeedling, FaMask, FaFlask, FaUser, FaBriefcase, FaLaptop, FaLandmark, FaMagic } from 'react-icons/fa';
+import { FaSearch, FaBookOpen, FaHeart, FaStar, FaUserPlus, FaChevronLeft, FaChevronRight, FaBook, FaSeedling, FaMask, FaFlask, FaUser, FaBriefcase, FaLaptop, FaLandmark, FaMagic } from 'react-icons/fa';
 
 function Home() {
   const { user } = useAuth();
@@ -297,61 +297,6 @@ function Home() {
           </div>
         </section>
       )}
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 text-2xl font-bold text-white mb-6">
-              <FaBookOpen className="text-blue-500" />
-              <h3>BookBazaar</h3>
-            </div>
-            <p className="text-gray-400 leading-relaxed mb-6">
-              Your premier destination for discovering, buying, and selling books. Join our community of book lovers today.
-            </p>
-            <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><FaFacebook /></a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all"><FaTwitter /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all"><FaInstagram /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all"><FaLinkedin /></a>
-            </div>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-bold text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li><Link to="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
-              <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
-              <li><Link to="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-bold text-lg mb-6">Categories</h4>
-            <ul className="space-y-3">
-              <li><Link to="/fiction" className="hover:text-blue-400 transition-colors">Fiction</Link></li>
-              <li><Link to="/non-fiction" className="hover:text-blue-400 transition-colors">Non-Fiction</Link></li>
-              <li><Link to="/self-help" className="hover:text-blue-400 transition-colors">Self-Help</Link></li>
-              <li><Link to="/science" className="hover:text-blue-400 transition-colors">Science</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-bold text-lg mb-6">Legal</h4>
-            <ul className="space-y-3">
-              <li><Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
-              <li><Link to="/returns" className="hover:text-blue-400 transition-colors">Return Policy</Link></li>
-              <li><Link to="/shipping" className="hover:text-blue-400 transition-colors">Shipping Info</Link></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-gray-800 text-center text-gray-500">
-          <p>&copy; 2025 BookBazaar. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
