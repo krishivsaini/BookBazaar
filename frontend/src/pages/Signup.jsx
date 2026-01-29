@@ -13,7 +13,7 @@ function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { signup } = useAuth();
+  const { signup, guestLogin } = useAuth();
   const navigate = useNavigate();
 
   const { name, email, password, confirmPassword } = formData;
@@ -42,7 +42,7 @@ function Signup() {
     const result = await signup(name, email, password);
 
     if (result.success) {
-      navigate('/dashboard');
+      navigate('/');
     } else {
       setError(result.message);
     }
@@ -153,6 +153,31 @@ function Signup() {
           >
             <FaUserPlus />
             {loading ? 'Creating Account...' : 'Sign Up'}
+          </button>
+
+          <div className="relative flex items-center justify-center my-4">
+            <div className="border-t border-gray-300 w-full"></div>
+            <span className="bg-white/80 px-3 text-sm text-gray-500 font-medium">OR</span>
+            <div className="border-t border-gray-300 w-full"></div>
+          </div>
+
+          <button 
+            type="button"
+            onClick={async () => {
+              setLoading(true);
+              const result = await guestLogin();
+              if (result.success) {
+                navigate('/');
+              } else {
+                setError(result.message);
+              }
+              setLoading(false);
+            }}
+            className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={loading}
+          >
+            <FaSignInAlt />
+            Continue as Guest
           </button>
         </form>
 

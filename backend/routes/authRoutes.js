@@ -1,5 +1,5 @@
 import express from 'express';
-import { signup, login, getProfile } from '../controllers/authController.js';
+import { signup, login, getProfile, guestLogin } from '../controllers/authController.js';
 import { protect } from '../middleware/auth.js';
 import { body } from 'express-validator';
 
@@ -21,6 +21,7 @@ const loginValidation = [
 
 router.post('/signup', signupValidation, signup);
 router.post('/login', loginValidation, login);
+router.post('/guest-login', guestLogin);
 router.get('/profile', protect, getProfile);
 
 export default router;

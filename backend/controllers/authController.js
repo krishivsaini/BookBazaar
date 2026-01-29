@@ -1,5 +1,37 @@
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
+import crypto from 'crypto';
+
+export const guestLogin = async (req, res) => {
+  try {
+    const randomSuffix = crypto.randomBytes(4).toString('hex');
+    const email = `guest_${randomSuffix}@bookbazaar.tmp`;
+    const password = crypto.randomBytes(8).toString('hex');
+    const name = `Guest User`;
+
+    const user = await User.create({
+      name,
+      email,
+      password,
+      role: 'guest',
+    });
+
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(400).json({ message: 'Invalid guest data' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;

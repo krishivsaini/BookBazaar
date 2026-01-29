@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FaUser, FaTachometerAlt, FaBox, FaHeart, FaSignOutAlt } from 'react-icons/fa';
+import LogoutModal from '../components/LogoutModal';
 
 const Profile = () => {
   const { user, logout } = useAuth();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-10 px-4 sm:px-6 lg:px-8">
@@ -63,11 +65,7 @@ const Profile = () => {
           </Link>
 
           <button 
-            onClick={() => {
-              if (window.confirm('Are you sure you want to logout?')) {
-                logout();
-              }
-            }}
+            onClick={() => setShowLogoutModal(true)}
             className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 group hover:-translate-y-1 text-left w-full"
           >
             <div className="flex items-center gap-4 mb-4">
@@ -80,6 +78,16 @@ const Profile = () => {
           </button>
         </div>
       </div>
+
+
+      <LogoutModal 
+        isOpen={showLogoutModal} 
+        onClose={() => setShowLogoutModal(false)} 
+        onConfirm={() => {
+          logout();
+          setShowLogoutModal(false);
+        }} 
+      />
     </div>
   );
 };
