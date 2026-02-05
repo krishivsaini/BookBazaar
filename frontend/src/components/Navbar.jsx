@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { FaBookOpen, FaUser, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaBars, FaTimes, FaHome, FaShoppingCart } from 'react-icons/fa';
+import { FaBookOpen, FaUser, FaSignInAlt, FaUserPlus, FaBars, FaTimes, FaHome, FaShoppingCart } from 'react-icons/fa';
 
 function Navbar() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const { cartCount } = useCart();
-  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-    setIsMobileMenuOpen(false);
-  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
